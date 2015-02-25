@@ -30,8 +30,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "*****************************************************************************
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
@@ -48,23 +46,12 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Shougo/vimshell.vim'
 
 "" Snippets
-NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
 "" Color
 NeoBundle 'tomasr/molokai'
 
 "" Custom bundles
-
-"" Python Bundle
-NeoBundle "davidhalter/jedi-vim"
-NeoBundle "scrooloose/syntastic"
-NeoBundle "majutsushi/tagbar"
-NeoBundle "Yggdroot/indentLine"
-
-
-NeoBundle 'vim-scripts/c.vim'
-
 
 "" PHP Bundle
 NeoBundle 'arnaud-lb/vim-php-namespace'
@@ -79,8 +66,6 @@ NeoBundle 'tpope/vim-haml'
 
 "" Javascript Bundle
 NeoBundle "scrooloose/syntastic"
-
-
 
 call neobundle#end()
 
@@ -144,7 +129,6 @@ set number
 
 let no_buffers_menu=1
 highlight BadWhitespace ctermbg=red guibg=red
-colorscheme molokai
 
 set mousemodel=popup
 set t_Co=256
@@ -191,10 +175,8 @@ set title
 set titleold="Terminal"
 set titlestring=%F
 
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 let g:airline_theme = 'powerlineish'
-let g:airline_enable_branch = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -320,12 +302,6 @@ noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = ',e'
 let g:ctrlp_open_new_file = 'r'
 
-" snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
-
 " syntastic
 " let g:syntastic_always_populate_loc_list=1
 " let g:syntastic_error_symbol='✗'
@@ -372,11 +348,6 @@ vmap > >gv
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 "" Custom configs
 
-" vim-python
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
-    \ formatoptions+=croq softtabstop=4 smartindent
-    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-
 " jedi-vim
 let g:jedi#popup_on_dot = 0
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -387,12 +358,9 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 
-" syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
-
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#tagbar#enabled = 1
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -421,5 +389,6 @@ nmap <C-l> :tabnext<CR>
 nmap <C-h> :tabprevious<CR>
 set expandtab
 
+colorscheme molokai
 
 
